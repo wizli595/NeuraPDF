@@ -11,7 +11,7 @@
 </script>
 
 <div class="chat-panel-wrapper">
-	<ChatPanel onSubmit={handleSubmit} />
+	<ChatPanel onSubmit={handleSubmit} documentId={1} />
 </div>
 
 <style>

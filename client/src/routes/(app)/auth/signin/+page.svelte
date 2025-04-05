@@ -21,9 +21,7 @@
 </script>
 
 <!-- Page Wrapper: Ensures Full Page Centering -->
-<div
-	class="flex items-center justify-center p-5 bg-gray-100 dark:bg-gray-900 transition-all rounded-md"
->
+<div class="flex items-center justify-center p-5 transition-all rounded-md">
 	<!-- Sign-in Box -->
 	<div
 		class="w-full max-w-md p-8 bg-white dark:bg-gray-800 shadow-lg dark:shadow-xl rounded-xl border border-gray-200 dark:border-gray-700 transition-all"
