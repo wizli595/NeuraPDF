@@ -23,7 +23,9 @@
 		<div class="flex justify-between h-16">
 			<div class="flex items-center">
 				<a href="/">
-					<div class="text-2xl font-bold tracking-tight flex items-center gap-2 dark:text-white">
+					<div
+						class="text-2xl font-bold tracking-tight text-black flex items-center gap-2 dark:text-white"
+					>
 						<span class="material-icons text-yellow-300">auto_awesome</span>
 						Neura<span class="text-yellow-300">PDF</span>
 					</div>

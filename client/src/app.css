@@ -11,3 +11,9 @@ pre {
   font-size: 14px;
   margin: 3px 0;
 }
+html, body {
+	min-height: 100%;
+	background-color: #0f172a; /* or use your Tailwind dark shade */
+	background-image: linear-gradient(to bottom right, #0f172a, #1e293b); /* dark gradient */
+	color-scheme: dark;
+}

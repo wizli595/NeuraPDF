@@ -1,3 +1,4 @@
+<!-- ChatPanel.svelte -->
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import {
@@ -35,36 +36,50 @@
 	});
 </script>
 
-<div
-	style="height: calc(100vh - 80px);"
-	class="flex flex-col h-full bg-slate-50 border rounded-xl shadow"
->
-	<div class="rounded-lg border-b px-3 py-2 flex flex-row items-center justify-between">
-		<div class="opacity-40">
+<!-- Panel Container -->
+<div class="flex flex-col h-full rounded-xl border border-white/20 dark:border-slate-700/40 
+	bg-white/80 dark:bg-slate-900/70 backdrop-blur-md shadow-2xl overflow-hidden 
+	transition-all duration-300 hover:shadow-blue-500/5 dark:hover:shadow-blue-400/5">
+
+	<!-- Header -->
+	<header class="flex justify-between items-center px-4 py-3 border-b border-white/20 dark:border-slate-700/40">
+		<div class="flex items-center gap-2 opacity-70">
 			<input id="chat-type" type="checkbox" bind:checked={useStreaming} />
 			<label for="chat-type" class="italic">Streaming</label>
 		</div>
-		<div class="flex gap-2">
+		<div class="flex gap-2 items-center">
 			<ConversationSelect conversations={$store.conversations} />
-			<button class="rounded text-sm border border-blue-500 px-2 py-0.5" on:click={handleNewChat}
-				>New Chat</button
-			>
+			<button
+				class="border border-blue-500 text-xs px-2 py-1 rounded hover:bg-blue-100 dark:hover:bg-blue-900 transition"
+				on:click={handleNewChat}>
+				New Chat
+			</button>
 		</div>
-	</div>
-	<div class="flex flex-col flex-1 px-3 py-2 overflow-y-scroll">
+	</header>
+
+	<!-- Messages -->
+	<section class="flex-1 overflow-y-auto px-4 py-3 space-y-3 custom-scrollbar">
 		<ChatList messages={activeConversation?.messages || []} />
-		<div class="relative">
-			{#if $store.error && $store.error.length < 200}
-				<div class="p-4">
-					<Alert type="error" onDismiss={resetError}>
-						{$store.error}
-					</Alert>
-				</div>
-			{/if}
-			<ChatInput on:submit={handleSubmit} />
-		</div>
-	</div>
+		{#if $store.error && $store.error.length < 200}
+			<Alert type="error" onDismiss={resetError} />
+		{/if}
+	</section>
+
+	<!-- Footer / Input -->
+	<footer class="border-t border-white/20 dark:border-slate-700/40 px-4 py-3">
+		<ChatInput on:submit={handleSubmit} />
+	</footer>
 </div>
 
 <style>
+	.custom-scrollbar::-webkit-scrollbar {
+		width: 6px;
+	}
+	.custom-scrollbar::-webkit-scrollbar-track {
+		background: transparent;
+	}
+	.custom-scrollbar::-webkit-scrollbar-thumb {
+		background-color: rgba(100, 100, 100, 0.3);
+		border-radius: 10px;
+	}
 </style>

@@ -43,17 +43,14 @@
 	);
 
 	onMount(async () => {
-		// Initial animations sequence
 		setTimeout(() => (showHero = true), 300);
 		await tick();
 		setTimeout(() => typeIt(), 800);
 		setTimeout(() => (showIcons = true), 1500);
 		setTimeout(() => startDemoAnimation(), 2000);
 
-		// Setup intersection observers
 		setupScrollObservers();
 
-		// Listen for scroll events
 		window.addEventListener('scroll', handleScroll);
 
 		return () => {
@@ -90,7 +87,6 @@
 	}
 
 	function handleScroll() {
-		// Update for parallax effects if needed
 		const scrollY = window.scrollY;
 		coords.update(($coords) => ({ y: scrollY * 0.2 }));
 	}
@@ -124,7 +120,6 @@
 </script>
 
 <div class="page-wrapper">
-	<!-- Enhanced Navbar -->
 	<nav
 		class="fixed top-0 w-full z-50 bg-transparent backdrop-blur-sm transition-all duration-300 px-6 py-4 flex items-center justify-between text-white"
 		class:bg-opacity-90={currentSection !== 'hero'}
@@ -156,12 +151,10 @@
 		</div>
 	</nav>
 
-	<!-- Improved Hero Section with Interactive Demo -->
 	<div
 		id="hero"
 		class="min-h-screen bg-landing text-white flex flex-col items-center justify-center p-6 pt-28 relative overflow-hidden"
 	>
-		<!-- Background Gradients -->
 		<div class="absolute inset-0 -z-10">
 			<div
 				class="absolute top-0 right-0 w-1/2 h-1/2 bg-purple-600 rounded-full opacity-20 blur-3xl transform translate-x-1/4 -translate-y-1/4"
@@ -186,7 +179,6 @@
 					{typingText}
 				</p>
 
-				<!-- Interactive PDF Chat Demo -->
 				<div
 					class="max-w-lg mx-auto my-8 border border-white/20 bg-gray-900/70 backdrop-blur-sm rounded-xl shadow-2xl overflow-hidden"
 				>
@@ -205,7 +197,6 @@
 							<span class="text-white/70 text-sm">research-findings-2025.pdf • 18 pages</span>
 						</div>
 
-						<!-- Demo Chat Messages -->
 						{#each visibleMessages as message, i}
 							<div
 								class="mb-4 {message.type === 'user' ? 'flex justify-end' : 'flex'}"
@@ -291,7 +282,6 @@
 		{/if}
 	</div>
 
-	<!-- Enhanced Features Section -->
 	<section
 		id="features"
 		class="py-24 bg-gradient-to-b from-gray-900 to-gray-800 relative overflow-hidden"
@@ -311,7 +301,6 @@
 
 			<div class="flex flex-wrap -mx-4">
 				{#if showFeatures}
-					<!-- Feature 1 -->
 					<div class="w-full md:w-1/3 px-4 mb-8" in:fly={{ y: 40, duration: 600, delay: 0 }}>
 						<div
 							class="bg-gray-800/50 backdrop-blur-sm border border-purple-500/20 p-6 rounded-xl shadow-xl hover:shadow-purple-500/10 hover:-translate-y-1 transition-all duration-300 h-full"
@@ -325,7 +314,6 @@
 						</div>
 					</div>
 
-					<!-- Feature 2 -->
 					<div class="w-full md:w-1/3 px-4 mb-8" in:fly={{ y: 40, duration: 600, delay: 200 }}>
 						<div
 							class="bg-gray-800/50 backdrop-blur-sm border border-purple-500/20 p-6 rounded-xl shadow-xl hover:shadow-purple-500/10 hover:-translate-y-1 transition-all duration-300 h-full"
@@ -339,7 +327,6 @@
 						</div>
 					</div>
 
-					<!-- Feature 3 -->
 					<div class="w-full md:w-1/3 px-4 mb-8" in:fly={{ y: 40, duration: 600, delay: 400 }}>
 						<div
 							class="bg-gray-800/50 backdrop-blur-sm border border-purple-500/20 p-6 rounded-xl shadow-xl hover:shadow-purple-500/10 hover:-translate-y-1 transition-all duration-300 h-full"
@@ -353,7 +340,6 @@
 						</div>
 					</div>
 
-					<!-- Feature 4 -->
 					<div class="w-full md:w-1/2 px-4 mb-8" in:fly={{ y: 40, duration: 600, delay: 600 }}>
 						<div
 							class="bg-gray-800/50 backdrop-blur-sm border border-purple-500/20 p-6 rounded-xl shadow-xl hover:shadow-purple-500/10 hover:-translate-y-1 transition-all duration-300 h-full"
@@ -457,7 +443,6 @@
 		</div>
 	</section>
 
-	<!-- Modern Footer -->
 	<footer id="footer" class="bg-gray-900 text-white py-12 border-t border-white/10">
 		<div class="container mx-auto px-6">
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -541,7 +526,6 @@
 		scroll-behavior: smooth;
 	}
 
-	/* Custom scrollbar styles */
 	::-webkit-scrollbar {
 		width: 8px;
 	}

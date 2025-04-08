@@ -1,162 +1,134 @@
-# First Time Setup
+# 📚 NeuraPDF Project Overview
 
-## Using Pipenv [Recommended]
+**NeuraPDF** is a full-stack application that allows users to upload and embed PDFs, then chat with them using AI-powered natural language queries. It integrates Flask (backend) and Svelte (frontend), with Redis and Celery for asynchronous task processing.
 
-```
-# Install dependencies
+---
+
+## 🧠 Project Structure and Folder Descriptions
+
+### `app/`
+
+Flask backend application.
+
+- **`celery/`**: Celery integration with Flask. Includes:
+
+  - `__init__.py`: Initializes Celery with Flask context.
+  - `worker.py`: Entry point to launch the Celery worker process.
+
+- **`chat/`**: Core logic for PDF chat functionality.
+
+  - `chat.py`: Handles query-to-response logic.
+  - `create_embeddings.py`: Generates vector embeddings for PDF content.
+  - `score.py`: Scores responses based on relevance.
+  - `models/`: Placeholder for chat-related data models.
+
+- **`web/`**: Flask web layer and APIs.
+  - `api.py`: Defines main Flask API routes.
+  - `config/`: Configuration initialization.
+  - `db/`: SQLAlchemy models for:
+    - `conversation.py`, `message.py`, `pdf.py`, `user.py`: Represents app data.
+  - `files.py`: PDF file processing utilities.
+  - `hooks.py`: App startup/shutdown hooks.
+  - `tasks/`: Celery background jobs (e.g. embedding generation).
+  - `views/`: Flask route handlers for user-facing endpoints.
+
+---
+
+### `client/`
+
+Frontend written in Svelte.
+
+- **`src/api/axios.ts`**: Axios client config for API calls.
+- **`components/`**: Reusable UI components like chat interface, navbar, forms.
+- **`routes/`**: SvelteKit routing.
+  - `(app)/auth/`: Auth pages (`signin`, `signup`, `signout`).
+  - `(app)/chat/`: Main chat interface.
+  - `(app)/documents/`: Upload and view documents.
+  - `(app)/scores/`: View scoring results.
+- **`store/`**: Svelte stores for reactive state management (auth, chat, errors, etc.).
+- **`static/`**: Static assets like `favicon`, animation gif, and OpenAPI docs.
+- Svelte + Tailwind + TypeScript configuration files.
+
+---
+
+### `instance/sqlite.db`
+
+SQLite database file (auto-created for local development).
+
+---
+
+### 🧪 Other Files
+
+- `Pipfile` / `requirements.txt`: Python dependencies.
+- `tasks.py`: Entry point or glue code for CLI or debugging utilities.
+- `README.md`: Project documentation.
+
+---
+
+## ⚙️ Technologies Used
+
+- **Backend**: Flask, Celery, SQLAlchemy, Redis
+- **Frontend**: SvelteKit, Tailwind CSS, TypeScript
+- **AI / NLP**: Embedding models for vector search
+- **Database**: SQLite (dev), pluggable for production
+
+---
+
+## 🛠 Install dependencies and set up the environment
+
+```bash
 pipenv install
-
-# Create a virtual environment
 pipenv shell
-
-# Initialize the database
-flask --app app.web init-db
-
-```
-
-## Using Venv [Optional]
-
-These instructions are included if you wish to use venv to manage your evironment and dependencies instead of Pipenv.
-
-```
-# Create the venv virtual environment
-python -m venv .venv
-
-# On MacOS, WSL, Linux
-source .venv/bin/activate
-
-# On Windows
-.\.venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Initialize the database
 flask --app app.web init-db
 ```
 
-# Running the app [Pipenv]
+---
 
-There are three separate processes that need to be running for the app to work: the server, the worker, and Redis.
+# 🚀 Running the App
 
-If you stop any of these processes, you will need to start them back up!
+> The app requires **three separate processes**:
+>
+> 1. Python server
+> 2. Celery worker
+> 3. Redis server
 
-Commands to start each are listed below. If you need to stop them, select the terminal window the process is running in and press Control-C
+---
 
-### To run the Python server
+## ✅ Start the Python Server
 
-Open a new terminal window and create a new virtual environment:
-
-```
+```bash
 pipenv shell
-```
-
-Then:
-
-```
 inv dev
 ```
 
-### To run the worker
+---
 
-Open a new terminal window and create a new virtual environment:
+## ✅ Start the Celery Worker
 
-```
+```bash
 pipenv shell
-```
-
-Then:
-
-```
 inv devworker
 ```
 
-### To run Redis
+---
 
-```
+## ✅ Start Redis
+
+```bash
 redis-server
 ```
 
-### To reset the database
+---
 
-Open a new terminal window and create a new virtual environment:
+## 🔄 Reset the Database
 
-```
+```bash
 pipenv shell
-```
-
-Then:
-
-```
 flask --app app.web init-db
 ```
 
-# Running the app [Venv]
+---
 
-_These instructions are included if you wish to use venv to manage your evironment and dependencies instead of Pipenv._
+## 💬 Summary
 
-There are three separate processes that need to be running for the app to work: the server, the worker, and Redis.
-
-If you stop any of these processes, you will need to start them back up!
-
-Commands to start each are listed below. If you need to stop them, select the terminal window the process is running in and press Control-C
-
-### To run the Python server
-
-Open a new terminal window and create a new virtual environment:
-
-```
-# On MacOS, WSL, Linux
-source .venv/bin/activate
-
-# On Windows
-.\.venv\Scripts\activate
-```
-
-Then:
-
-```
-inv dev
-```
-
-### To run the worker
-
-Open a new terminal window and create a new virtual environment:
-
-```
-# On MacOS, WSL, Linux
-source .venv/bin/activate
-
-# On Windows
-.\.venv\Scripts\activate
-```
-
-Then:
-
-```
-inv devworker
-```
-
-### To run Redis
-
-```
-redis-server
-```
-
-### To reset the database
-
-Open a new terminal window and create a new virtual environment:
-
-```
-# On MacOS, WSL, Linux
-source .venv/bin/activate
-
-# On Windows
-.\.venv\Scripts\activate
-```
-
-Then:
-
-```
-flask --app app.web init-db
-```
+NeuraPDF enables users to upload PDFs, generate embeddings, and interact with them through a chat interface. It processes heavy embedding tasks asynchronously with Celery and Redis and provides a polished UI using SvelteKit.

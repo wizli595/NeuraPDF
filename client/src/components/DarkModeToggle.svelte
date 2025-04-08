@@ -115,7 +115,7 @@
 	{#if userPrefersDark}
 		<button
 			on:click={resetToSystemPreference}
-			class="system-preference-button"
+			class="system-preference-button text-black dark:text-white"
 			title="Use system preference"
 			aria-label="Use system preference"
 		>
@@ -147,6 +147,7 @@
 		overflow: hidden;
 		cursor: pointer;
 		transition: all 0.3s ease;
+		color: black;
 	}
 
 	:global(.dark) .theme-toggle-button {

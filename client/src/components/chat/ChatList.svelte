@@ -19,7 +19,7 @@
 	};
 </script>
 
-<div class="overflow-y-auto flex flex-col flex-1">
+<div class=" flex flex-col flex-1">
 	<div class="flex flex-col flex-1 gap-3 px-1.5 py-1">
 		{#each messages as message}
 			{#if message.role === 'user' || message.role === 'human'}
