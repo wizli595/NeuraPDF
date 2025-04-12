@@ -5,6 +5,7 @@
 	import { fly } from 'svelte/transition';
 	import { page } from '$app/stores';
 	import { derived } from 'svelte/store';
+	import { goto } from '$app/navigation';
 
 	$: user = $auth.user;
 	const isSignupPage = derived(page, ($page) => $page.url.pathname === '/auth/signup');
@@ -66,6 +67,9 @@
 							class="ml-3 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors"
 							in:fly={{ y: -20, duration: 300 }}
 							out:fly={{ y: 20, duration: 300 }}
+							on:click={() => {
+								goto('/auth/signout');
+							}}
 						>
 							Sign Out
 						</button>
