@@ -14,9 +14,12 @@
 		}
 
 		const labels = Object.keys(data);
-		const chartValues = Object.values(data).map(
-			(scores) => scores.reduce((a, b) => a + b, 0) / scores.length
-		);
+		console.log(Object.values(data));
+		const chartValues = Object.values(data).map((scores) => {
+			if (!Array.isArray(scores)) return 0;
+
+			return scores.reduce((a, b) => a + b, 0) / scores.length;
+		});
 
 		new Chart(ctx, {
 			type: 'bar',

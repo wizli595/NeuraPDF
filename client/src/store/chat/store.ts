@@ -94,6 +94,28 @@ const insertMessageToActive = (message: Message) => {
 		conv.messages.push(message);
 	});
 };
+// const insertMessageToActive = (message: Message) => {
+// 	store.update((s) => {
+// 		const convIndex = s.conversations.findIndex((c) => c.id === s.activeConversationId);
+// 		if (convIndex === -1) return s;
+
+// 		const conv = s.conversations[convIndex];
+
+// 		// Return new updated conversations array
+// 		const updatedConv: Conversation = {
+// 			...conv,
+// 			messages: [...conv.messages, message]
+// 		};
+
+// 		const updatedConversations = [...s.conversations];
+// 		updatedConversations[convIndex] = updatedConv;
+
+// 		return {
+// 			...s,
+// 			conversations: updatedConversations
+// 		};
+// 	});
+// };
 
 const removeMessageFromActive = (id: number) => {
 	store.update((s) => {

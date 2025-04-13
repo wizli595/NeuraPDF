@@ -1,6 +1,6 @@
 from langchain_openai import ChatOpenAI
 
-def build_llm(chat_args):
+def build_llm(chat_args,model_name):
     """
     :param chat_args: ChatArgs object containing
         conversation_id, pdf_id, metadata, and streaming flag.
@@ -11,4 +11,4 @@ def build_llm(chat_args):
 
         chain = build_llm(chat_args)
     """
-    return ChatOpenAI()
+    return ChatOpenAI(streaming=chat_args.streaming,model=model_name)

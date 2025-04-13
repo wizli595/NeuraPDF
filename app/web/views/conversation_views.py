@@ -48,7 +48,7 @@ def create_message(conversation):
     """
     input = request.json.get("input")
     streaming = request.args.get("stream", False)
-
+    print("streaming", streaming)
     pdf = conversation.pdf
 
     chat_args = ChatArgs(

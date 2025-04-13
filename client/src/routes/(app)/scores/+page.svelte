@@ -5,10 +5,12 @@
 	import { fade, scale } from 'svelte/transition';
 
 	export let data: PageData;
+	console.log(data.scores);
 
 	$: llmScores = data.scores && data.scores['llm'];
 	$: retrieverScores = data.scores && data.scores['retriever'];
 	$: memoryScores = data.scores && data.scores['memory'];
+	console.log(llmScores);
 	function fadeAndScale(node: Element, params: any) {
 		const f = fade(node, params);
 		const s = scale(node, params);
