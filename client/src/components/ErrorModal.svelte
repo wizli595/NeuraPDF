@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { errorStore, reset } from '$s/errors';
 	import ErrorMessage from '$c/ErrorMessage.svelte';
+	import DOMPurify from 'dompurify';
 
 	// Close modal on Escape key press
 	const listener = (event: KeyboardEvent) => {
@@ -10,14 +11,19 @@
 		}
 	};
 
-	// Add & remove event listener for Escape key
 	onMount(() => {
 		window.addEventListener('keydown', listener);
 		return () => window.removeEventListener('keydown', listener);
 	});
+
+	// Optional: Clean errors when you set them
+	$: sanitizedErrors = $errorStore.errors.map((error) => ({
+		...error,
+		message: DOMPurify.sanitize(error.message)
+	}));
 </script>
 
-{#if $errorStore.errors.length}
+{#if sanitizedErrors.length}
 	<!-- Dark Mode Overlay -->
 	<button
 		on:click={reset}
@@ -39,7 +45,6 @@
 						on:click={reset}
 						class="text-white hover:text-gray-300 dark:hover:text-gray-400 transition-colors"
 					>
-						<!-- Close Icon -->
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							class="h-6 w-6"
@@ -58,13 +63,16 @@
 				</div>
 			</header>
 
-			<!-- Error Messages -->
+			<!-- Error Content -->
 			<div class="flex-1 overflow-y-auto p-6">
-				{#each $errorStore.errors as error}
+				{#each sanitizedErrors as error}
 					<div
-						class="mb-4 p-4 bg-red-50 dark:bg-red-900 border border-red-200 dark:border-red-600 rounded-lg"
+						class="mb-4 p-4 bg-red-50 dark:bg-red-900 border border-red-200 dark:border-red-600 rounded-lg text-sm"
 					>
-						<p class="text-red-700 dark:text-red-300">{error.message}</p>
+						<!-- Render HTML content -->
+						<div class="prose prose-sm dark:prose-invert max-w-none overflow-x-auto">
+							{@html error.message}
+						</div>
 					</div>
 				{/each}
 			</div>

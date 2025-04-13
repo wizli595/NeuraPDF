@@ -7,7 +7,7 @@ from app.web.db.models.conversation import Conversation
 
 def get_messages_by_conversation_id(
     conversation_id: str,
-) -> AIMessage | HumanMessage | SystemMessage:
+) -> AIMessage | HumanMessage | SystemMessage :
     """
     Finds all messages that belong to the given conversation_id
 
@@ -19,7 +19,9 @@ def get_messages_by_conversation_id(
         db.session.query(Message)
         .filter_by(conversation_id=conversation_id)
         .order_by(Message.created_on.desc())
+        .all()
     )
+    print(f"Messages for conversation {conversation_id}: {messages}")
     return [message.as_lc_message() for message in messages]
 
 
