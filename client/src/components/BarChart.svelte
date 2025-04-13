@@ -14,10 +14,7 @@
 		}
 
 		const labels = Object.keys(data);
-		console.log(Object.values(data));
 		const chartValues = Object.values(data).map((scores) => {
-			if (!Array.isArray(scores)) return 0;
-
 			return scores.reduce((a, b) => a + b, 0) / scores.length;
 		});
 
