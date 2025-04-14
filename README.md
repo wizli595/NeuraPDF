@@ -4,6 +4,33 @@
 
 ---
 
+## 📸 Visual Overview
+
+### Application Landing Page
+
+![Landing page](./images/landing.png)
+
+### Application chat page
+
+![Chat page](./images/chat.png)
+
+### Application upload page
+
+![Upload page](./images/upload.png)
+
+### Application scores page
+
+![Score page](./images/scores.png)
+
+### Application sign-up page
+
+![Sign-up page](./images/sign-up.png)
+
+### Application sign-in page
+
+![Sign-in page](./images/sign-in.png)
+
+
 ## 🧠 Project Structure and Folder Descriptions
 
 ### `app/`
@@ -128,6 +155,20 @@ flask --app app.web init-db
 ```
 
 ---
+
+## ADDITIONAL STUFF I DID FOR VERSION CONTROLE
+
+==> use langchain-openai=0.0.8
+
+```
+ pip install langchain-openai==0.0.8
+```
+
+==> downgrade pydantic<2.0.0
+
+```
+ pip install "pydantic<2.0.0"
+```
 
 ## 💬 Summary
 
