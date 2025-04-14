@@ -8,7 +8,7 @@
 
 ### Application Landing Page
 
-![Landing page](./images/landing.png)
+![Landing page](./images/landing1.png)
 
 ### Application chat page
 
@@ -29,7 +29,6 @@
 ### Application sign-in page
 
 ![Sign-in page](./images/sign-in.png)
-
 
 ## 🧠 Project Structure and Folder Descriptions
 
