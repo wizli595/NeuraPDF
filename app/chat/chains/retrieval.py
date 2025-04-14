@@ -1,4 +1,5 @@
 from langchain.chains import ConversationalRetrievalChain
 from app.chat.chains.streamable import StreamableChain
-class StreamingConversationalRetrievalChain(StreamableChain, ConversationalRetrievalChain):
+from .traceable import TraceableChain
+class StreamingConversationalRetrievalChain(TraceableChain, StreamableChain, ConversationalRetrievalChain):
    pass

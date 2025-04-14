@@ -13,6 +13,7 @@ from app.web.api import (
 from app.chat.score import random_component_by_score
 
 
+
 def select_component(
         component_type,
         component_map,
@@ -69,9 +70,12 @@ def build_chat(chat_args: ChatArgs):
         memory=memory_name
     )
     condense_question_llm = ChatOpenAI(streaming=False)
+
+    
     return StreamingConversationalRetrievalChain.from_llm(
         llm=llm,
         condense_question_llm=condense_question_llm,
         retriever=retriever,
         memory=memory,
+        metadata=chat_args.metadata
     )
