@@ -347,8 +347,8 @@
 							<span class="material-icons text-5xl text-yellow-300 mb-4">bolt</span>
 							<h3 class="text-2xl font-semibold text-white mb-3">Lightning Fast Processing</h3>
 							<p class="text-gray-300">
-								Upload PDFs of any size and receive instant insights. Our optimized processing
-								engine handles even the most complex documents with ease.
+								Upload PDFs and receive instant insights. Our optimized processing engine handles
+								even the most complex documents with ease.
 							</p>
 						</div>
 					</div>
@@ -453,13 +453,11 @@
 					</div>
 					<p class="text-gray-400 mb-4">Revolutionizing how you interact with your documents.</p>
 					<div class="flex space-x-4">
-						<a href="#" class="text-gray-400 hover:text-yellow-300 transition-colors">
+						<a href="/" class="text-gray-400 hover:text-yellow-300 transition-colors">
 							<span class="material-icons">facebook</span>
 						</a>
-						<a href="#" class="text-gray-400 hover:text-yellow-300 transition-colors">
-							<span class="material-icons">twitter</span>
-						</a>
-						<a href="#" class="text-gray-400 hover:text-yellow-300 transition-colors">
+
+						<a href="/" class="text-gray-400 hover:text-yellow-300 transition-colors">
 							<span class="material-icons">linkedin</span>
 						</a>
 					</div>

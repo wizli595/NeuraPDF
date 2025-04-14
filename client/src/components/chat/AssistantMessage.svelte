@@ -30,16 +30,43 @@
 	>
 		{@html marked(content, { breaks: true, gfm: true })}
 	</div>
-	<div class="flex flex-row flex-1 items-start gap-1 flex-wrap justify-center">
+	<div class="flex flex-row items-start gap-3 justify-center mt-2">
 		{#if score >= 0}
-			<div class={upKlass} style="line-height: 12px; padding: 6px;">
-				<Icon on:click={() => applyScore(1)} name="thumb_up" outlined />
-			</div>
+			<button
+				on:click={() => applyScore(1)}
+				class={`group relative flex items-center justify-center 
+					w-10 h-10 rounded-full 
+					transition-all duration-300 ease-in-out
+					${score === 1 ? 'bg-blue-500 shadow-lg scale-105' : 'hover:bg-blue-500 bg-transparent'}`}
+			>
+				<Icon
+					name="thumb_up"
+					outlined
+					classN={`transition-all duration-300 ease-in-out
+						${score === 1 ? 'text-white' : 'text-blue-500 group-hover:text-white'} 
+						group-hover:scale-125 group-hover:-rotate-6 group-active:scale-95`}
+					size="20px"
+				/>
+			</button>
 		{/if}
+
 		{#if score <= 0}
-			<div class={downKlass} style="line-height: 12px; padding: 6px;">
-				<Icon on:click={() => applyScore(-1)} name="thumb_down" outlined />
-			</div>
+			<button
+				on:click={() => applyScore(-1)}
+				class={`group relative flex items-center justify-center 
+					w-10 h-10 rounded-full 
+					transition-all duration-300 ease-in-out
+					${score === -1 ? 'bg-red-500 shadow-lg scale-105' : 'hover:bg-red-500 bg-transparent'}`}
+			>
+				<Icon
+					name="thumb_down"
+					outlined
+					classN={`transition-all duration-300 ease-in-out
+						${score === -1 ? 'text-white' : 'text-red-500  group-hover:text-white'} 
+						group-hover:scale-125 group-hover:rotate-6 group-active:scale-95`}
+					size="20px"
+				/>
+			</button>
 		{/if}
 	</div>
 </div>

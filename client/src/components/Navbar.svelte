@@ -1,8 +1,8 @@
 <script lang="ts">
-	import AuthLinks from '$c/auth/AuthLinks.svelte';
+	// import AuthLinks from '$c/auth/AuthLinks.svelte';
 	import { auth } from '$s/auth';
 	import DarkModeToggle from '$c/DarkModeToggle.svelte';
-	import { fly } from 'svelte/transition';
+	import { fade, fly } from 'svelte/transition';
 	import { page } from '$app/stores';
 	import { derived } from 'svelte/store';
 	import { goto } from '$app/navigation';

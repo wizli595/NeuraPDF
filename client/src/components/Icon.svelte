@@ -5,13 +5,15 @@
 	export let outlined = false;
 	export let size = '16px';
 	export let klass = '';
+	export let classN: string = '';
 
 	const klasses = c(
 		{
 			'material-icons-outlined': outlined,
 			'material-icons': !outlined
 		},
-		klass
+		klass,
+		classN
 	);
 </script>
 

@@ -24,7 +24,7 @@
 </script>
 
 <textarea
-	class="w-full mx-auto py-1.5 px-2.5 resize-none border rounded max-h-40"
+	class="w-full mx-auto py-1.5 px-2.5 resize-none text-white border rounded border-slate-700 max-h-40 dark:bg-slate-800/50 dark:border-slate-700/40"
 	style:height={height + 'px'}
 	bind:value
 	on:keydown={handleKeyDown}

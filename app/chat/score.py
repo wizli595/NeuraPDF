@@ -13,8 +13,8 @@ def random_component_by_score(component_type, component_map):
     names = component_map.keys()
     avg_scores = {}
     for name in names:
-        score = int(values.get(name,0))
-        count = int(counts.get(name,0))
+        score = int(values.get(name,1))
+        count = int(counts.get(name,1))
         avg = score / count 
         avg_scores[name] = max(avg,0.1)
     
@@ -85,9 +85,11 @@ def get_scores():
     for component_type in aggregate.keys():
         values = client.hgetall(f"{component_type}_score_values")
         counts = client.hgetall(f"{component_type}_score_counts")
+        print(f"values: {values}")
+        print(f"counts: {counts}")
         for name in values.keys():
-            score = int(values.get(name,0))
-            count = int(counts.get(name,0))
+            score = int(values.get(name,1))
+            count = int(counts.get(name,1))
             avg = score / count
             aggregate[component_type][name] = [avg]
     return aggregate

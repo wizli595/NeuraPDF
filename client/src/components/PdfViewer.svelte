@@ -69,9 +69,17 @@
 <div class="pdf-container">
 	<!-- Navigation -->
 	<div class="pdf-nav">
-		<button on:click={goToPreviousPage} disabled={currentPage === 1}>← Previous</button>
+		<button
+			on:click={goToPreviousPage}
+			disabled={currentPage === 1}
+			class="text-black dark:text-white">← Previous</button
+		>
 		<span class="page-info">Page {currentPage} of {totalPages}</span>
-		<button on:click={goToNextPage} disabled={currentPage === totalPages}>Next →</button>
+		<button
+			on:click={goToNextPage}
+			disabled={currentPage === totalPages}
+			class="text-black dark:text-white">Next →</button
+		>
 	</div>
 
 	<!-- Canvas -->
@@ -118,11 +126,11 @@
 	}
 
 	.pdf-nav {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 1rem;
-	flex-wrap: wrap;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+		flex-wrap: wrap;
 	}
 
 	.pdf-nav button {
@@ -139,6 +147,7 @@
 
 	.pdf-nav button:hover:enabled {
 		background-color: #2563eb;
+		color: black;
 	}
 
 	.pdf-nav button:disabled {
@@ -151,5 +160,4 @@
 		color: #94a3b8;
 		font-weight: 500;
 	}
-
 </style>

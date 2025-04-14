@@ -26,14 +26,15 @@
 
 <ErrorModal />
 
-<div class="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-all duration-500">
-
-	<div in:fly={{ y: -20, duration: 800 }}>
+<div
+	class="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-all duration-500"
+>
+	<div in:fly={{ y: -20, duration: 800 }} out:fade={{ duration: 200 }}>
 		<Navbar />
 	</div>
 
-	<main in:fade={{ duration: 500, delay: 200 }} class="flex-grow  p-6 overflow-hidden">
-		{#each Array(3) as _, i}
+	<main in:fade={{ duration: 500, delay: 200 }} class=" p-6 overflow-hidden">
+		{#each Array(2) as _, i}
 			<div
 				class="absolute rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-3xl opacity-[0.15] dark:opacity-[0.07] animate-float"
 				style="
@@ -48,17 +49,23 @@
 			/>
 		{/each}
 
-		<div class="w-full max-w-4xl mx-auto relative z-10 " in:fly={{ y: 20, duration: 800, delay: 400 }}>
-			<div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg shadow-2xl rounded-2xl 
-				border border-white/20 dark:border-gray-700/30 transition-all duration-300
-				hover:shadow-blue-500/5 dark:hover:shadow-blue-400/5 p-5">
-				<slot />
+		<main class="px-4 pt-10 pb-4 z-10 relative">
+			<div class="max-w-4xl mx-auto" in:fly={{ y: 20, duration: 800, delay: 400 }}>
+				<div
+					class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg shadow-2xl rounded-2xl
+					border border-white/20 dark:border-gray-700/30 transition-all duration-300
+					hover:shadow-blue-500/5 dark:hover:shadow-blue-400/5 p-5"
+				>
+					<slot />
+				</div>
 			</div>
-		</div>
+		</main>
 	</main>
 
-	<footer class="bg-gray-900 text-gray-400 border-t border-gray-700 px-4 py-6">
-		<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+	<!-- <footer class="bg-gray-900 text-gray-400 border-t border-gray-700 px-4 py-6">
+		<div
+			class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"
+		>
 			<div class="text-sm">© {new Date().getFullYear()} Your Company. All rights reserved.</div>
 			<div class="flex space-x-6">
 				<a href="/about" class="hover:text-white transition">About</a>
@@ -66,14 +73,20 @@
 				<a href="/terms" class="hover:text-white transition">Terms</a>
 			</div>
 		</div>
-	</footer>
+	</footer> -->
 </div>
 
 <style>
 	@keyframes float {
-		0% { transform: translateY(0px) scale(1); }
-		50% { transform: translateY(-20px) scale(1.05); }
-		100% { transform: translateY(0px) scale(1); }
+		0% {
+			transform: translateY(0px) scale(1);
+		}
+		50% {
+			transform: translateY(-20px) scale(1.05);
+		}
+		100% {
+			transform: translateY(0px) scale(1);
+		}
 	}
 	:global(.animate-float) {
 		animation: float 15s ease-in-out infinite;
